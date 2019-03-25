@@ -88,7 +88,7 @@
     dispatch_once(&onceToken, ^{
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         // 当前应用名称
-        NSString *appCurName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+        appCurName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
     });
     return appCurName;
 }

@@ -79,11 +79,10 @@
 /// 偏移量
 - (SeparatorChainModel *(^)(CGFloat offset))offset
 {
-    @weakify(self);
+    __weak typeof(self) weakself = self;
     return ^(CGFloat offset) {
-        @strongify(self);
-        [self.SeparatorModel setOffset:offset];
-        [self.view updateSeparator];
+        [weakself.SeparatorModel setOffset:offset];
+        [weakself.view updateSeparator];
         return self;
     };
 }
@@ -91,55 +90,50 @@
 /// 位置
 - (SeparatorChainModel *(^)(UIColor *color))color
 {
-    @weakify(self);
+    __weak typeof(self) weakself = self;
     return ^(UIColor *color) {
-        @strongify(self);
-        [self.SeparatorModel setColor:color];
-        [self.view updateSeparator];
+        [weakself.SeparatorModel setColor:color];
+        [weakself.view updateSeparator];
         return self;
     };
 }
 /// 起点
 - (SeparatorChainModel *(^)(CGFloat begin))beginAt
 {
-    @weakify(self);
+    __weak typeof(self) weakself = self;
     return ^(CGFloat begin) {
-        @strongify(self);
-        [self.SeparatorModel setBegin:begin];
-        [self.view updateSeparator];
+        [weakself.SeparatorModel setBegin:begin];
+        [weakself.view updateSeparator];
         return self;
     };
 }
 /// 长度
 - (SeparatorChainModel *(^)(CGFloat length))length
 {
-    @weakify(self);
+    __weak typeof(self) weakself = self;
     return ^(CGFloat length) {
-        @strongify(self);
-        [self.SeparatorModel setLength:length];
-        [self.view updateSeparator];
+        [weakself.SeparatorModel setLength:length];
+        [weakself.view updateSeparator];
         return self;
     };
 }
 /// 终点
 - (SeparatorChainModel *(^)(CGFloat end))endAt
 {
-    @weakify(self);
+    __weak typeof(self) weakself = self;
     return ^(CGFloat end) {
-        @strongify(self);
-        [self.SeparatorModel setEnd:end];
-        [self.view updateSeparator];
+        [weakself.SeparatorModel setEnd:end];
+        [weakself.view updateSeparator];
         return self;
     };
 }
 /// 线粗
 - (SeparatorChainModel *(^)(CGFloat borderWidth))borderWidth;
 {
-    @weakify(self);
+    __weak typeof(self) weakself = self;
     return ^(CGFloat borderWidth) {
-        @strongify(self);
-        [self.SeparatorModel setBorderWidth:borderWidth];
-        [self.view updateSeparator];
+        [weakself.SeparatorModel setBorderWidth:borderWidth];
+        [weakself.view updateSeparator];
         return self;
     };
 }
@@ -160,26 +154,24 @@
 
 - (SeparatorChainModel *(^)(SeparatorPosition position))addSeparator;
 {
-    @weakify(self);
+    __weak typeof(self) weakself = self;
     return ^(SeparatorPosition position) {
-        @strongify(self);
         SeparatorChainModel *chainModel = [[SeparatorChainModel alloc] initWithView:self andPosition:position];
-        self.removeSeparator(position);
-        [self.SeparatorArray addObject:chainModel.SeparatorModel];
-        [self updateSeparator];
+        weakself.removeSeparator(position);
+        [weakself.SeparatorArray addObject:chainModel.SeparatorModel];
+        [weakself updateSeparator];
         return chainModel;
     };
 }
 
 - (void (^)(SeparatorPosition position))removeSeparator
 {
-    @weakify(self);
+    __weak typeof(self) weakself = self;
     return ^(SeparatorPosition position) {
-        @strongify(self);
         SeparatorModel *model = [self SeparatorModelForPosition:position];
         if (model) {
             [model.layer removeFromSuperlayer];
-            [self.SeparatorArray removeObject:model];
+            [weakself.SeparatorArray removeObject:model];
         }
     };
 }

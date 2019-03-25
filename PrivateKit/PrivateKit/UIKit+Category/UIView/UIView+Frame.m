@@ -7,6 +7,7 @@
 //
 
 #import "UIView+Frame.h"
+#import <objc/runtime.h>
 
 @implementation UIView (Frame)
 - (void)setX:(CGFloat)x

@@ -21,7 +21,6 @@
 		84E97AB12248AEF000DF8842 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A7D2248AEF000DF8842 /* NSString+Size.m */; };
 		84E97AB22248AEF000DF8842 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A802248AEF000DF8842 /* NSArray+zh_SafeAccess.m */; };
 		84E97AB32248AEF000DF8842 /* NSArray+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A812248AEF000DF8842 /* NSArray+Json.m */; };
-		84E97AB42248AEF000DF8842 /* NSAttributedString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A852248AEF000DF8842 /* NSAttributedString+Addition.m */; };
 		84E97AB52248AEF000DF8842 /* NSDate+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A882248AEF000DF8842 /* NSDate+Category.m */; };
 		84E97AB62248AEF000DF8842 /* UIImage+Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A8D2248AEF000DF8842 /* UIImage+Video.m */; };
 		84E97AB72248AEF000DF8842 /* UIImage+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A8E2248AEF000DF8842 /* UIImage+Compression.m */; };
@@ -83,8 +82,6 @@
 		84E97A802248AEF000DF8842 /* NSArray+zh_SafeAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+zh_SafeAccess.m"; sourceTree = "<group>"; };
 		84E97A812248AEF000DF8842 /* NSArray+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Json.m"; sourceTree = "<group>"; };
 		84E97A822248AEF000DF8842 /* NSArray+zh_SafeAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+zh_SafeAccess.h"; sourceTree = "<group>"; };
-		84E97A842248AEF000DF8842 /* NSAttributedString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Addition.h"; sourceTree = "<group>"; };
-		84E97A852248AEF000DF8842 /* NSAttributedString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Addition.m"; sourceTree = "<group>"; };
 		84E97A862248AEF000DF8842 /* Foundation+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Foundation+Category.h"; sourceTree = "<group>"; };
 		84E97A882248AEF000DF8842 /* NSDate+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Category.m"; sourceTree = "<group>"; };
 		84E97A892248AEF000DF8842 /* NSDate+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Category.h"; sourceTree = "<group>"; };
@@ -268,8 +265,6 @@
 		84E97A832248AEF000DF8842 /* NSAttributedString */ = {
 			isa = PBXGroup;
 			children = (
-				84E97A842248AEF000DF8842 /* NSAttributedString+Addition.h */,
-				84E97A852248AEF000DF8842 /* NSAttributedString+Addition.m */,
 			);
 			path = NSAttributedString;
 			sourceTree = "<group>";
@@ -546,7 +541,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84E97AB42248AEF000DF8842 /* NSAttributedString+Addition.m in Sources */,
 				84E97ABA2248AEF000DF8842 /* UIScrollView+Addition.m in Sources */,
 				84E97A472248AD5200DF8842 /* ViewController.m in Sources */,
 				84E97AB92248AEF000DF8842 /* UIImage+round.m in Sources */,
