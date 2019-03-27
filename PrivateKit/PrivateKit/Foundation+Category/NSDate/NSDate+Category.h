@@ -10,57 +10,65 @@
 
 @interface NSDate (Category)
 
-/**
- *比较from和self的时间差值
- */
-+ (NSDateComponents *)deltaFrom:(NSDate *)from;
+#pragma mark - 日期关系
+- (BOOL)isSameDay:(NSDate *)aDate;
+@property (nonatomic, assign, readonly) BOOL isToday;
+@property (nonatomic, assign, readonly) BOOL isTomorrow;
+@property (nonatomic, assign, readonly) BOOL isYesterday;
 
-/**
- 获取当前时间
- 
- @param dateFormat 时间格式
- @return 时间字符串
- */
-+ (NSString *)getCurrentStringTimesWithdateFormat:(NSString *)dateFormat;
+- (BOOL)isSameWeekAsDate:(NSDate *)aDate;
+@property (nonatomic, assign, readonly) BOOL isThisWeek;
+@property (nonatomic, assign, readonly) BOOL isNextWeek;
+@property (nonatomic, assign, readonly) BOOL isLastWeek;
 
-/**
- 获取当前时间
- */
-+ (NSDate *)getCurrentDateTimes;
+- (BOOL)isSameMonthAsDate:(NSDate *)aDate;
+@property (nonatomic, assign, readonly) BOOL isThisMonth;
+@property (nonatomic, assign, readonly) BOOL isNextMonth;
+@property (nonatomic, assign, readonly) BOOL isLastMonth;
 
-/**
- *是否为今年
- */
-- (BOOL)isThisYear;
+- (BOOL)isSameYearAsDate:(NSDate *)aDate;
+@property (nonatomic, assign, readonly) BOOL isThisYear;
+@property (nonatomic, assign, readonly) BOOL isNextYear;
+@property (nonatomic, assign, readonly) BOOL isLastYear;
 
-/**
- *是否为今天
- */
-- (BOOL)isToday;
+- (BOOL)isEarlierThanDate:(NSDate *)aDate;
+- (BOOL)isLaterThanDate:(NSDate *)aDate;
+@property (nonatomic, assign, readonly) BOOL isInFuture;
+@property (nonatomic, assign, readonly) BOOL isInPast;
 
-/**
- *是否为昨天
- */
-- (BOOL)isYesterday;
+@property (nonatomic, assign, readonly) BOOL isTypicallyWorkday;
+@property (nonatomic, assign, readonly) BOOL isTypicallyWeekend;
 
-/**
- 是否在一周内
- */
-- (BOOL)isWeek;
+#pragma mark - 间隔日期
++ (NSDate *)dateTomorrow;
++ (NSDate *)dateYesterday;
++ (NSDate *)dateWithDaysFromNow:(NSInteger)days;
++ (NSDate *)dateWithDaysBeforeNow:(NSInteger)days;
++ (NSDate *)dateWithHoursFromNow:(NSInteger)hours;
++ (NSDate *)dateWithHoursBeforeNow:(NSInteger)hours;
++ (NSDate *)dateWithMinutesFromNow:(NSInteger)minutes;
++ (NSDate *)dateWithMinutesBeforeNow:(NSInteger)minutes;
 
-/**
- 根据不同格式，格式化时间戳
- 
- @param date 时间戳
- @return 格式化后的时间
- */
-+ (NSString *)dateFormatter:(NSDate *)date;
+#pragma mark - 日期加减
+- (NSDate *)dateByAddingYears:(NSInteger)years;
+- (NSDate *)dateBySubtractingYears:(NSInteger)years;
+- (NSDate *)dateByAddingMonths:(NSInteger)months;
+- (NSDate *)dateBySubtractingMonths:(NSInteger)months;
+- (NSDate *)dateByAddingDays:(NSInteger)days;
+- (NSDate *)dateBySubtractingDays:(NSInteger)days;
+- (NSDate *)dateByAddingHours:(NSInteger)hours;
+- (NSDate *)dateBySubtractingHours:(NSInteger)hours;
+- (NSDate *)dateByAddingMinutes:(NSInteger)minutes;
+- (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes;
 
-// 获取当前时间戳
-+ (NSString *)getCurrentTimestamp;
-//  获取指定时间的时间戳
-+(NSString *)getNowTimestamp:(NSDate *)date;
-
+#pragma mark - 日期间隔
+- (NSInteger)minutesAfterDate:(NSDate *)aDate;
+- (NSInteger)minutesBeforeDate:(NSDate *)aDate;
+- (NSInteger)hoursAfterDate:(NSDate *)aDate;
+- (NSInteger)hoursBeforeDate:(NSDate *)aDate;
+- (NSInteger)daysAfterDate:(NSDate *)aDate;
+- (NSInteger)daysBeforeDate:(NSDate *)aDate;
+- (NSInteger)distanceInDaysToDate:(NSDate *)anotherDate;
 
 
 #pragma mark - 基本时间参数
