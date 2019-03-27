@@ -61,50 +61,38 @@
 //  获取指定时间的时间戳
 +(NSString *)getNowTimestamp:(NSDate *)date;
 
-/**
- 消息模块部分
- 根据不同格式，格式化时间戳
- 
- @param date 时间戳
- @return 格式化后的时间
- */
-+ (NSString *)messageWithDate:(NSDate *)date;
 
-/**
- 时间加随机数
- */
-+ (NSString *)timeAndRandom;
 
-/**
- 消息id
- 
- @return 本地消息id
- */
-+ (NSString *)localMessageId;
+#pragma mark - 基本时间参数
+@property (nonatomic, assign, readonly) NSUInteger year;
+@property (nonatomic, assign, readonly) NSUInteger month;
+@property (nonatomic, assign, readonly) NSUInteger day;
+@property (nonatomic, assign, readonly) NSUInteger hour;
+@property (nonatomic, assign, readonly) NSUInteger minute;
+@property (nonatomic, assign, readonly) NSUInteger second;
+/// 时期几，整数
+@property (nonatomic, assign, readonly) NSUInteger weekday;
+/// 当前月份的天数
+@property (nonatomic, assign, readonly) NSUInteger dayInMonth;
+/// 是不是闰年
+@property (nonatomic, assign, readonly) BOOL isLeapYear;
 
-/**
- 两个时间差
- 
- @param preTime 上一条消息的时间
- @param lastTime 最后一条消息的时间
- @return 是否显示时间
- */
-+ (BOOL)showTimeWithPreviousTime:(NSTimeInterval)preTime lastTime:(NSTimeInterval)lastTime;
-
-/**
- 聊天页面消息时间显示
- 
- @param recvTime 服务器收到的时间
- @return 处理好的时间
- */
-+ (NSString *)messageTimeWithRecvTime:(NSTimeInterval)recvTime;
-
-/**
- 会话页面消息时间显示
- 
- @param recvTime 服务器收到的时间
- @return 处理好的时间
- */
-+ (NSString *)conversationTimeWithRecvTime:(NSTimeInterval)recvTime;
+#pragma mark - 日期格式化
+/// YYYY年MM月dd日
+- (NSString *)formatYMD;
+/// 自定义分隔符
+- (NSString *)formatYMDWithSeparate:(NSString *)separate;
+/// MM月dd日
+- (NSString *)formatMD;
+/// 自定义分隔符
+- (NSString *)formatMDWithSeparate:(NSString *)separate;
+/// HH:MM:SS
+- (NSString *)formatHMS;
+/// HH:MM
+- (NSString *)formatHM;
+/// 星期几
+- (NSString *)formatWeekday;
+/// 月份
+- (NSString *)formatMonth;
 
 @end

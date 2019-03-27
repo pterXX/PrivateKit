@@ -182,241 +182,190 @@
     return [[NSNumber numberWithDouble:[date timeIntervalSince1970]] stringValue];
 }
 
-/**
- 消息模块部分
- 根据不同格式，格式化时间戳
- 
- @param date 时间戳
- @return 格式化后的时间
- */
-+ (NSString *)messageWithDate:(NSDate *)date
+
+
+#pragma mark - # 基本时间参数
+- (NSUInteger)year {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitYear) fromDate:self];
+#else
+    NSDateComponents *dayComponents = [calendar components:(NSYearCalendarUnit) fromDate:self];
+#endif
+    return [dayComponents year];
+}
+
+- (NSUInteger)month {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitMonth) fromDate:self];
+#else
+    NSDateComponents *dayComponents = [calendar components:(NSMonthCalendarUnit) fromDate:self];
+#endif
+    return [dayComponents month];
+}
+
+- (NSUInteger)day {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitDay) fromDate:self];
+#else
+    NSDateComponents *dayComponents = [calendar components:(NSDayCalendarUnit) fromDate:self];
+#endif
+    return [dayComponents day];
+}
+
+
+- (NSUInteger)hour {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitHour) fromDate:self];
+#else
+    NSDateComponents *dayComponents = [calendar components:(NSHourCalendarUnit) fromDate:self];
+#endif
+    return [dayComponents hour];
+}
+
+- (NSUInteger)minute {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitMinute) fromDate:self];
+#else
+    NSDateComponents *dayComponents = [calendar components:(NSMinuteCalendarUnit) fromDate:self];
+#endif
+    return [dayComponents minute];
+}
+
+- (NSUInteger)second {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
+    NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitSecond) fromDate:self];
+#else
+    NSDateComponents *dayComponents = [calendar components:(NSSecondCalendarUnit) fromDate:self];
+#endif
+    return [dayComponents second];
+}
+
+- (NSUInteger)weekday
 {
-    if (!date) {
-        return nil;
-    }
-    // 日期格式化
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-
-    if (date.isThisYear)
-    {
-        if (date.isToday)
-        {
-            fmt.dateFormat = @"HH:mm";
-            return [fmt stringFromDate:date];
-        }
-        else
-        {
-            // 其他
-            fmt.dateFormat = @"MM-dd";
-            return [fmt stringFromDate:date];
-        }
-    }
-    else
-    {
-        // 非今年
-        fmt.dateFormat = @"yyyy-MM-dd";
-        return [fmt stringFromDate:date];
-    }
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [gregorian components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday) fromDate:self];
+    NSInteger weekday = [comps weekday] - 1;
+    weekday = weekday == 0 ? 7 : weekday;
+    return weekday;
 }
 
-/**
- 聊天页面消息时间显示
-
- @param recvTime 服务器收到的时间
- @return 处理好的时间
- */
-+ (NSString *)messageTimeWithRecvTime:(NSTimeInterval)recvTime
+- (NSUInteger)dayInMonth
 {
-    NSString *formatStringForHours = [NSDateFormatter dateFormatFromTemplate:@"j" options:0 locale:[NSLocale currentLocale]];
-    NSRange containsA = [formatStringForHours rangeOfString:@"a"];
-    //hasAMPM==TURE为12小时制，否则为24小时制
-    BOOL hasAMPM = containsA.location != NSNotFound;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString *recvTimeStr = [NSString stringWithFormat:@"%.0f",recvTime];
-    recvTimeStr = [recvTimeStr substringToIndex:recvTimeStr.length - 3];
-    
-    NSDate *recvDate = [NSDate dateWithTimeIntervalSince1970:[recvTimeStr integerValue]];
-    if (recvDate.isToday)
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"aa hh:mm"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"HH:mm"];
-        }
+    switch (self.month) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            return 31;
+        case 2:
+            return self.isLeapYear ? 29 : 28;
     }
-    else if (recvDate.isYesterday)
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"aa hh:mm"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"HH:mm"];
-        }
-        
-        return [NSString stringWithFormat:@"昨天 %@",[dateFormatter stringFromDate:recvDate]];
-    }
-    else if (recvDate.isWeek)
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"EEE aa hh:mm"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"EEE HH:mm"];
-        }
-    }
-    else if (recvDate.isThisYear)
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"MM月dd日 aa hh:mm"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"MM月dd日 HH:mm"];
-        }
-    }
-    else
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日 aa hh:mm"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
-        }
-    }
-    
-    NSString *receiveTime = [dateFormatter stringFromDate:recvDate];
-    
-    return receiveTime;
+    return 30;
 }
 
-/**
- 会话页面消息时间显示
- 
- @param recvTime 服务器收到的时间
- @return 处理好的时间
- */
-+ (NSString *)conversationTimeWithRecvTime:(NSTimeInterval)recvTime
+- (BOOL)isLeapYear {
+    if ((self.year % 4  == 0 && self.year % 100 != 0) || self.year % 400 == 0) {
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark - # 日期格式化
+/// YYYY年MM月dd日
+- (NSString *)formatYMD
 {
-    if (recvTime == 0) {
-        return @"";
-    }
-    
-    NSString *formatStringForHours = [NSDateFormatter dateFormatFromTemplate:@"j" options:0 locale:[NSLocale currentLocale]];
-    NSRange containsA = [formatStringForHours rangeOfString:@"a"];
-    //hasAMPM==TURE为12小时制，否则为24小时制
-    BOOL hasAMPM = containsA.location != NSNotFound;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString *recvTimeStr = [NSString stringWithFormat:@"%.0f",recvTime];
-    recvTimeStr = [recvTimeStr substringToIndex:recvTimeStr.length - 3];
-    
-    NSDate *recvDate = [NSDate dateWithTimeIntervalSince1970:[recvTimeStr integerValue]];
-    if (recvDate.isToday)
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"aa hh:mm"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"HH:mm"];
-        }
-    }
-    else if (recvDate.isYesterday)
-    {
-        return @"昨天";
-    }
-    else if (recvDate.isWeek)
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"EEE"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"EEE"];
-        }
-    }
-    else if (recvDate.isThisYear)
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"MM月dd日"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"MM月dd日"];
-        }
-    }
-    else
-    {
-        if (hasAMPM)
-        {
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
-        }
-        else
-        {
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
-        }
-    }
-    
-    NSString *receiveTime = [dateFormatter stringFromDate:recvDate];
-    
-    return receiveTime;
+    return [NSString stringWithFormat:@"%lu年%02lu月%02lu日", (unsigned long)self.year, (unsigned long)self.month, (unsigned long)self.day];
 }
 
-/**
- 时间加随机数
- */
-+ (NSString *)timeAndRandom
+/// 自定义分隔符
+- (NSString *)formatYMDWithSeparate:(NSString *)separate
 {
-    NSInteger timeInterval = [[NSDate date] timeIntervalSince1970] * 1000;
-    NSInteger random = arc4random() % 10000;
-    NSString *result = [NSString stringWithFormat:@"%ld%04ld", timeInterval, (long)random];
-    NSLog(@"会话id：%@", result);
-    
-    return result;
+    return [NSString stringWithFormat:@"%lu%@%02lu%@%02lu", (unsigned long)self.year, separate, (unsigned long)self.month, separate, (unsigned long)self.day];
 }
 
-
-/**
- 消息id
-
- @return 本地消息id
- */
-+ (NSString *)localMessageId {
-    return [self getCurrentTimestamp];
-}
-
-/**
- 两个时间差
-
- @param preTime 上一条消息的时间
- @param lastTime 最后一条消息的时间
- @return 是否显示时间
- */
-+ (BOOL)showTimeWithPreviousTime:(NSTimeInterval)preTime lastTime:(NSTimeInterval)lastTime
+/// MM月dd日
+- (NSString *)formatMD
 {
-//    NSLog(@"preTime:%f, lastTime:%f", preTime, lastTime);
-    NSTimeInterval value = lastTime/1000 - preTime/1000;
-    BOOL showTime = value > 60 || value < -60;
-    
-    return showTime;
+    return [NSString stringWithFormat:@"%02lu月%02lu日", (unsigned long)self.month, (unsigned long)self.day];
 }
+
+/// 自定义分隔符
+- (NSString *)formatMDWithSeparate:(NSString *)separate
+{
+    return [NSString stringWithFormat:@"%02lu%@%02lu", (unsigned long)self.month, separate, (unsigned long)self.day];
+}
+
+/// HH:MM:SS
+- (NSString *)formatHMS
+{
+    return [NSString stringWithFormat:@"%02lu:%02lu:%02lu", (unsigned long)self.hour, (unsigned long)self.minute, (unsigned long)self.second];
+}
+
+/// HH:MM
+- (NSString *)formatHM
+{
+    return [NSString stringWithFormat:@"%02lu:%02lu", (unsigned long)self.hour, (unsigned long)self.minute];
+}
+
+/// 星期几
+- (NSString *)formatWeekday
+{
+    switch([self weekday]) {
+        case 1:
+            return NSLocalizedString(@"星期一", nil);
+        case 2:
+            return NSLocalizedString(@"星期二", nil);
+        case 3:
+            return NSLocalizedString(@"星期三", nil);
+        case 4:
+            return NSLocalizedString(@"星期四", nil);
+        case 5:
+            return NSLocalizedString(@"星期五", nil);
+        case 6:
+            return NSLocalizedString(@"星期六", nil);
+        case 7:
+            return NSLocalizedString(@"星期天", nil);
+        default:
+            break;
+    }
+    return @"";
+}
+
+/// 月份
+- (NSString *)formatMonth {
+    switch(self.month) {
+        case 1:
+            return NSLocalizedString(@"一月", nil);
+        case 2:
+            return NSLocalizedString(@"二月", nil);
+        case 3:
+            return NSLocalizedString(@"三月", nil);
+        case 4:
+            return NSLocalizedString(@"四月", nil);
+        case 5:
+            return NSLocalizedString(@"五月", nil);
+        case 6:
+            return NSLocalizedString(@"六月", nil);
+        case 7:
+            return NSLocalizedString(@"七月", nil);
+        case 8:
+            return NSLocalizedString(@"八月", nil);
+        case 9:
+            return NSLocalizedString(@"九月", nil);
+        case 10:
+            return NSLocalizedString(@"十月", nil);
+        case 11:
+            return NSLocalizedString(@"十一月", nil);
+        case 12:
+            return NSLocalizedString(@"十二月", nil);
+        default:
+            break;
+    }
+    return @"";
+}
+
 
 @end
