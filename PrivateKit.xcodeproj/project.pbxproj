@@ -14,6 +14,7 @@
 		849D7909224B41640074AE1F /* IMShortcutMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7907224B41640074AE1F /* IMShortcutMethod.m */; };
 		849D790C224B41A60074AE1F /* NSObject+Dealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D790A224B41A50074AE1F /* NSObject+Dealloc.m */; };
 		849D790F224B41D20074AE1F /* IMDeallocTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D790E224B41D20074AE1F /* IMDeallocTask.m */; };
+		849D79FF224B493E0074AE1F /* UIScrollView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D79FE224B493E0074AE1F /* UIScrollView+Extensions.m */; };
 		84E97A442248AD5200DF8842 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A432248AD5200DF8842 /* AppDelegate.m */; };
 		84E97A472248AD5200DF8842 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A462248AD5200DF8842 /* ViewController.m */; };
 		84E97A4C2248AD5A00DF8842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E97A4B2248AD5A00DF8842 /* Assets.xcassets */; };
@@ -74,6 +75,8 @@
 		849D790B224B41A50074AE1F /* NSObject+Dealloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Dealloc.h"; sourceTree = "<group>"; };
 		849D790D224B41D20074AE1F /* IMDeallocTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDeallocTask.h; sourceTree = "<group>"; };
 		849D790E224B41D20074AE1F /* IMDeallocTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDeallocTask.m; sourceTree = "<group>"; };
+		849D79FD224B493D0074AE1F /* UIScrollView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Extensions.h"; sourceTree = "<group>"; };
+		849D79FE224B493E0074AE1F /* UIScrollView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Extensions.m"; sourceTree = "<group>"; };
 		84E97A3F2248AD5200DF8842 /* PrivateKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrivateKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E97A422248AD5200DF8842 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84E97A432248AD5200DF8842 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 		84E97A952248AEF000DF8842 /* UIScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				849D79FD224B493D0074AE1F /* UIScrollView+Extensions.h */,
+				849D79FE224B493E0074AE1F /* UIScrollView+Extensions.m */,
 				84E97A962248AEF000DF8842 /* UIScrollView+Addition.h */,
 				84E97A972248AEF000DF8842 /* UIScrollView+Addition.m */,
 			);
@@ -601,6 +606,7 @@
 				84E97AC02248AEF000DF8842 /* UIDevice+Category.m in Sources */,
 				84E97AB62248AEF000DF8842 /* UIImage+Video.m in Sources */,
 				849D78FC224B40950074AE1F /* UIView+TipView.m in Sources */,
+				849D79FF224B493E0074AE1F /* UIScrollView+Extensions.m in Sources */,
 				84E97AB12248AEF000DF8842 /* NSString+Size.m in Sources */,
 				849D7909224B41640074AE1F /* IMShortcutMethod.m in Sources */,
 				849D7900224B40D80074AE1F /* NSObject+Association.m in Sources */,
