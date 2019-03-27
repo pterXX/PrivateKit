@@ -24,6 +24,7 @@
 #import "UIViewController+Category.h"
 #import "UIView+TipView.h"
 #import "UIScrollView+Extensions.h"
+#import "UIWindow+Extensions.h"
 
 
 #endif /* UIKit_Category_h */
