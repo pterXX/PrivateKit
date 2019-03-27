@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 @interface NSString (Size)
+- (CGSize)kk_SizeWithFont:(UIFont *)font;
 
-- (CGSize)kSizeWithFont:(UIFont *)font;
-- (CGSize)kSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode;
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size;
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToWidth:(CGFloat)width;
 
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode;
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode;
 
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode lineSpace:(CGFloat)lineSpace;
 @end

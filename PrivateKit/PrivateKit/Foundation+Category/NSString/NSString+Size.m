@@ -10,26 +10,62 @@
 
 @implementation NSString (Size)
 
-- (CGSize)kSizeWithFont:(UIFont *)font
+- (CGSize)kk_SizeWithFont:(UIFont *)font
 {
-    return [self kSizeWithFont:font constrainedToSize:CGSizeMake(CGFLOAT_MAX, 1) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize textSize = [self sizeWithAttributes:@{NSFontAttributeName : font}];
+    CGSize ansSize = CGSizeMake(ceil(textSize.width), ceil(textSize.height));
+    return ansSize;
 }
 
-- (CGSize)kSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size
 {
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    if (font) {
-        attributes[NSFontAttributeName] = font;
-    }
-    
+    CGSize textSize = [self boundingRectWithSize:size
+                                         options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                      attributes:@{NSFontAttributeName : font}
+                                         context:nil].size;
+    CGSize ansSize = CGSizeMake(ceil(textSize.width), ceil(textSize.height));
+    return ansSize;
+}
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToWidth:(CGFloat)width
+{
+    return [self kk_SizeWithFont:font constrainedToSize:CGSizeMake(width, MAXFLOAT)];
+}
+
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode
+{
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = lineBreakMode;
-    attributes[NSParagraphStyleAttributeName] = paragraphStyle;
+    NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
     
-    return [self boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+    CGSize textSize = [self boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+    
+    CGSize ansSize = CGSizeMake(ceil(textSize.width), ceil(textSize.height));
+    return ansSize;
 }
 
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode
+{
+    return [self kk_SizeWithFont:font constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:lineBreakMode];
+}
 
+- (CGSize)kk_SizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode lineSpace:(CGFloat)lineSpace;
+{
+    NSMutableDictionary *attr = [NSMutableDictionary new];
+    attr[NSFontAttributeName] = font;
+    if (lineBreakMode != NSLineBreakByWordWrapping) {
+        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+        paragraphStyle.lineBreakMode = lineBreakMode;
+        attr[NSParagraphStyleAttributeName] = paragraphStyle;
+    }
+    else {
+        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+        paragraphStyle.lineSpacing = lineSpace;
+        attr[NSParagraphStyleAttributeName] = paragraphStyle;
+    }
+    CGRect rect = [self boundingRectWithSize:size
+                                     options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                  attributes:attr context:nil];
+    return rect.size;
+}
 
 @end
