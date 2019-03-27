@@ -22,6 +22,7 @@
 #import "UIView+Frame.h"
 #import "UIView+Separator.h"
 #import "UIViewController+Category.h"
+#import "UIView+TipView.h"
 
 
 #endif /* UIKit_Category_h */
