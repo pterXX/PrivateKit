@@ -10,13 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, SeparatorPosition) {
-    SeparatorPositionTop,
-    SeparatorPositionBottom,
-    SeparatorPositionLeft,
-    SeparatorPositionRight,
-    SeparatorPositionCenterX,
-    SeparatorPositionCenterY,
+typedef NS_ENUM(NSInteger, IMSeparatorPosition) {
+    IMSeparatorPositionTop,
+    IMSeparatorPositionBottom,
+    IMSeparatorPositionLeft,
+    IMSeparatorPositionRight,
+    IMSeparatorPositionCenterX,
+    IMSeparatorPositionCenterY,
 };
 
 @class SeparatorModel;
@@ -39,9 +39,9 @@ typedef NS_ENUM(NSInteger, SeparatorPosition) {
 
 @interface UIView (Separator)
 
-- (SeparatorChainModel *(^)(SeparatorPosition position))addSeparator;
+- (SeparatorChainModel *(^)(IMSeparatorPosition position))addSeparator;
 
-- (void (^)(SeparatorPosition position))removeSeparator;
+- (void (^)(IMSeparatorPosition position))removeSeparator;
 
 - (void)updateSeparator;
 

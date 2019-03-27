@@ -16,7 +16,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         //手机序列号
-        identifierNumber = [NSString stringWithFormat:@"%ld",[[UIDevice currentDevice] userInterfaceIdiom]];
+        identifierNumber = [NSString stringWithFormat:@"%ld",(long)[[UIDevice currentDevice] userInterfaceIdiom]];
     });
     return identifierNumber;
 }

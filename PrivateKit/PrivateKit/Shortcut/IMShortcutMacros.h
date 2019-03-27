@@ -44,7 +44,7 @@ edgeInsets;  \
 /// URL
 #define     IMURL(urlString)            [NSURL URLWithString:urlString]
 /// 图片
-#define     IMImage(imageName)          (imageName ? [UIImage imageNamed:imageName] : [UIImage imageNamed:@""])
+#define     IMImage(imageName)          imageName ? [UIImage imageNamed:imageName] : [UIImage imageNamed:@""]
 #define     IMPNG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"png"]]
 #define     IMJPG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"jpg"]]
 
@@ -63,7 +63,7 @@ edgeInsets;  \
 #define     HexAColor(color, a)         [UIColor colorWithRed:((float)((color & 0xFF0000) >> 16))/255.0 green:((float)((color & 0xFF00) >> 8))/255.0 blue:((float)(color & 0xFF))/255.0 alpha:a]
 
 #pragma mark - # 快捷方法
-/// PushVC
+/// IMPushVC
 #define     IMPushVC(vc)             {\
 [vc setHidesBottomBarWhenPushed:YES];\
 [self.navigationController pushViewController:vc animated:YES];\

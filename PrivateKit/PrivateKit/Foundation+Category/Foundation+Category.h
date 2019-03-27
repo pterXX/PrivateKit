@@ -17,5 +17,6 @@
 #import "NSDictionary+Json.h"
 #import "NSString+Category.h"
 #import "NSString+Size.h"
+#import "NSTimer+Block.h"
 
 #endif /* Foundation_Category_h */

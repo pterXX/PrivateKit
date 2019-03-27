@@ -18,6 +18,11 @@
 		849D7A06224B4AB70074AE1F /* UIWindow+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A05224B4AB70074AE1F /* UIWindow+Extensions.m */; };
 		849D7A0A224B4AE10074AE1F /* UIAlertView+ActionBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A09224B4AE10074AE1F /* UIAlertView+ActionBlocks.m */; };
 		849D7A11224B55690074AE1F /* UICollectionViewCell+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A0F224B55680074AE1F /* UICollectionViewCell+Extensions.m */; };
+		849D7A14224B56F90074AE1F /* UIScrollView+Pages.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A13224B56F90074AE1F /* UIScrollView+Pages.m */; };
+		849D7AE0224B61200074AE1F /* UIViewController+TipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7ADE224B611F0074AE1F /* UIViewController+TipView.m */; };
+		849D7B03224B6AB30074AE1F /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B01224B6AB20074AE1F /* UIButton+Extensions.m */; };
+		849D7B06224B6C850074AE1F /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B05224B6C850074AE1F /* UIImage+Size.m */; };
+		849D7B0D224B701F0074AE1F /* NSTimer+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B0B224B701F0074AE1F /* NSTimer+Block.m */; };
 		84E97A442248AD5200DF8842 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A432248AD5200DF8842 /* AppDelegate.m */; };
 		84E97A472248AD5200DF8842 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A462248AD5200DF8842 /* ViewController.m */; };
 		84E97A4C2248AD5A00DF8842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E97A4B2248AD5A00DF8842 /* Assets.xcassets */; };
@@ -86,6 +91,16 @@
 		849D7A09224B4AE10074AE1F /* UIAlertView+ActionBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+ActionBlocks.m"; sourceTree = "<group>"; };
 		849D7A0F224B55680074AE1F /* UICollectionViewCell+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+Extensions.m"; sourceTree = "<group>"; };
 		849D7A10224B55690074AE1F /* UICollectionViewCell+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+Extensions.h"; sourceTree = "<group>"; };
+		849D7A12224B56F90074AE1F /* UIScrollView+Pages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Pages.h"; sourceTree = "<group>"; };
+		849D7A13224B56F90074AE1F /* UIScrollView+Pages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Pages.m"; sourceTree = "<group>"; };
+		849D7ADE224B611F0074AE1F /* UIViewController+TipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TipView.m"; sourceTree = "<group>"; };
+		849D7ADF224B61200074AE1F /* UIViewController+TipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TipView.h"; sourceTree = "<group>"; };
+		849D7B01224B6AB20074AE1F /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extensions.m"; sourceTree = "<group>"; };
+		849D7B02224B6AB30074AE1F /* UIButton+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extensions.h"; sourceTree = "<group>"; };
+		849D7B04224B6C840074AE1F /* UIImage+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Size.h"; sourceTree = "<group>"; };
+		849D7B05224B6C850074AE1F /* UIImage+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Size.m"; sourceTree = "<group>"; };
+		849D7B0B224B701F0074AE1F /* NSTimer+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Block.m"; sourceTree = "<group>"; };
+		849D7B0C224B701F0074AE1F /* NSTimer+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Block.h"; sourceTree = "<group>"; };
 		84E97A3F2248AD5200DF8842 /* PrivateKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrivateKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E97A422248AD5200DF8842 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84E97A432248AD5200DF8842 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -232,6 +247,15 @@
 			path = UICollectionViewCell;
 			sourceTree = "<group>";
 		};
+		849D7B0E224B70240074AE1F /* NSTimer */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B0C224B701F0074AE1F /* NSTimer+Block.h */,
+				849D7B0B224B701F0074AE1F /* NSTimer+Block.m */,
+			);
+			path = NSTimer;
+			sourceTree = "<group>";
+		};
 		84E97A362248AD5200DF8842 = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +325,7 @@
 		84E97A752248AEF000DF8842 /* Foundation+Category */ = {
 			isa = PBXGroup;
 			children = (
+				849D7B0E224B70240074AE1F /* NSTimer */,
 				849D78FD224B40CC0074AE1F /* NSObject */,
 				84E97A762248AEF000DF8842 /* NSDictionary */,
 				84E97A792248AEF000DF8842 /* NSString */,
@@ -381,6 +406,8 @@
 		84E97A8C2248AEF000DF8842 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
+				849D7B04224B6C840074AE1F /* UIImage+Size.h */,
+				849D7B05224B6C850074AE1F /* UIImage+Size.m */,
 				84E97A8D2248AEF000DF8842 /* UIImage+Video.m */,
 				84E97A8E2248AEF000DF8842 /* UIImage+Compression.m */,
 				84E97A8F2248AEF000DF8842 /* UIImage+Color.h */,
@@ -396,6 +423,8 @@
 		84E97A952248AEF000DF8842 /* UIScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				849D7A12224B56F90074AE1F /* UIScrollView+Pages.h */,
+				849D7A13224B56F90074AE1F /* UIScrollView+Pages.m */,
 				849D79FD224B493D0074AE1F /* UIScrollView+Extensions.h */,
 				849D79FE224B493E0074AE1F /* UIScrollView+Extensions.m */,
 				84E97A962248AEF000DF8842 /* UIScrollView+Addition.h */,
@@ -416,6 +445,8 @@
 		84E97A9C2248AEF000DF8842 /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
+				849D7B02224B6AB30074AE1F /* UIButton+Extensions.h */,
+				849D7B01224B6AB20074AE1F /* UIButton+Extensions.m */,
 				84E97A9D2248AEF000DF8842 /* UIButton+Extra.m */,
 				84E97A9E2248AEF000DF8842 /* UIButton+Extra.h */,
 			);
@@ -458,6 +489,8 @@
 		84E97AAC2248AEF000DF8842 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
+				849D7ADF224B61200074AE1F /* UIViewController+TipView.h */,
+				849D7ADE224B611F0074AE1F /* UIViewController+TipView.m */,
 				84E97AAD2248AEF000DF8842 /* UIViewController+Category.h */,
 				84E97AAE2248AEF000DF8842 /* UIViewController+Category.m */,
 			);
@@ -635,7 +668,9 @@
 				84E97AB52248AEF000DF8842 /* NSDate+Category.m in Sources */,
 				84E97ABC2248AEF000DF8842 /* UIButton+Extra.m in Sources */,
 				84E97A522248AD5A00DF8842 /* main.m in Sources */,
+				849D7B06224B6C850074AE1F /* UIImage+Size.m in Sources */,
 				84E97AAF2248AEF000DF8842 /* NSDictionary+Json.m in Sources */,
+				849D7AE0224B61200074AE1F /* UIViewController+TipView.m in Sources */,
 				84E97ABF2248AEF000DF8842 /* UIView+Separator.m in Sources */,
 				84E97ABE2248AEF000DF8842 /* UIView+Frame.m in Sources */,
 				849D790C224B41A60074AE1F /* NSObject+Dealloc.m in Sources */,
@@ -646,11 +681,14 @@
 				84E97AC02248AEF000DF8842 /* UIDevice+Category.m in Sources */,
 				84E97AB62248AEF000DF8842 /* UIImage+Video.m in Sources */,
 				849D78FC224B40950074AE1F /* UIView+TipView.m in Sources */,
+				849D7B03224B6AB30074AE1F /* UIButton+Extensions.m in Sources */,
 				849D79FF224B493E0074AE1F /* UIScrollView+Extensions.m in Sources */,
 				849D7A11224B55690074AE1F /* UICollectionViewCell+Extensions.m in Sources */,
+				849D7B0D224B701F0074AE1F /* NSTimer+Block.m in Sources */,
 				84E97AB12248AEF000DF8842 /* NSString+Size.m in Sources */,
 				849D7909224B41640074AE1F /* IMShortcutMethod.m in Sources */,
 				849D7900224B40D80074AE1F /* NSObject+Association.m in Sources */,
+				849D7A14224B56F90074AE1F /* UIScrollView+Pages.m in Sources */,
 				84E97AB32248AEF000DF8842 /* NSArray+Json.m in Sources */,
 				84E97A442248AD5200DF8842 /* AppDelegate.m in Sources */,
 				84E97ABB2248AEF000DF8842 /* UILabel+AutoLabelHeightAndWidth.m in Sources */,

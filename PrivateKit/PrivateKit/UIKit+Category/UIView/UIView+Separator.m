@@ -15,7 +15,7 @@
 @interface SeparatorModel : NSObject
 
 @property (nonatomic, strong) UIColor *color;
-@property (nonatomic, assign) SeparatorPosition position;
+@property (nonatomic, assign) IMSeparatorPosition position;
 
 @property (nonatomic, assign) CGFloat borderWidth;
 
@@ -35,7 +35,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        [self setPosition:SeparatorPositionBottom];
+        [self setPosition:IMSeparatorPositionBottom];
         [self setColor:TLSEPERATOR_DEFAULT_COLOR];
         [self setBegin:0];
         [self setEnd:0];
@@ -67,7 +67,7 @@
 @implementation SeparatorChainModel
 @synthesize SeparatorModel = _SeparatorModel;
 
-- (id)initWithView:(UIView *)view andPosition:(SeparatorPosition)position
+- (id)initWithView:(UIView *)view andPosition:(IMSeparatorPosition)position
 {
     if (self = [super init]) {
         _view = view;
@@ -152,10 +152,10 @@
 #pragma mark - ## UIView (Separator)
 @implementation UIView (Separator)
 
-- (SeparatorChainModel *(^)(SeparatorPosition position))addSeparator;
+- (SeparatorChainModel *(^)(IMSeparatorPosition position))addSeparator;
 {
     __weak typeof(self) weakself = self;
-    return ^(SeparatorPosition position) {
+    return ^(IMSeparatorPosition position) {
         SeparatorChainModel *chainModel = [[SeparatorChainModel alloc] initWithView:self andPosition:position];
         weakself.removeSeparator(position);
         [weakself.SeparatorArray addObject:chainModel.SeparatorModel];
@@ -164,10 +164,10 @@
     };
 }
 
-- (void (^)(SeparatorPosition position))removeSeparator
+- (void (^)(IMSeparatorPosition position))removeSeparator
 {
     __weak typeof(self) weakself = self;
-    return ^(SeparatorPosition position) {
+    return ^(IMSeparatorPosition position) {
         SeparatorModel *model = [self SeparatorModelForPosition:position];
         if (model) {
             [model.layer removeFromSuperlayer];
@@ -184,7 +184,7 @@
 }
 
 #pragma mark - # Private Methods
-- (SeparatorModel *)SeparatorModelForPosition:(SeparatorPosition)position
+- (SeparatorModel *)SeparatorModelForPosition:(IMSeparatorPosition)position
 {
     for (SeparatorModel *model in self.SeparatorArray) {
         if (model.position == position) {
@@ -199,7 +199,7 @@
     CGFloat startX = 0, startY = 0, endX = 0, endY = 0, offset = separatorModel.offset;
     CGFloat borderWidth = separatorModel.borderWidth;
     UIColor *color = separatorModel.color;
-    if (separatorModel.position == SeparatorPositionTop) {
+    if (separatorModel.position == IMSeparatorPositionTop) {
         startY = endY = borderWidth / 2.0 + offset;
         startX = separatorModel.begin;
         if (separatorModel.length > 0) {
@@ -209,7 +209,7 @@
             endX = self.frame.size.width + separatorModel.end;
         }
     }
-    else if (separatorModel.position == SeparatorPositionBottom) {
+    else if (separatorModel.position == IMSeparatorPositionBottom) {
         startY = endY = self.frame.size.height - borderWidth / 2.0 + offset;
         startX = separatorModel.begin;
         if (separatorModel.length > 0) {
@@ -219,7 +219,7 @@
             endX = self.frame.size.width + separatorModel.end;
         }
     }
-    else if (separatorModel.position == SeparatorPositionLeft) {
+    else if (separatorModel.position == IMSeparatorPositionLeft) {
         startX = endX = borderWidth / 2.0 + offset;
         startY = separatorModel.begin;
         if (separatorModel.length > 0) {
@@ -229,7 +229,7 @@
             endY = self.frame.size.height + separatorModel.end;
         }
     }
-    else if (separatorModel.position == SeparatorPositionRight) {
+    else if (separatorModel.position == IMSeparatorPositionRight) {
         startX = endX = self.frame.size.width - borderWidth / 2.0 + offset;
         startY = separatorModel.begin;
         if (separatorModel.length > 0) {

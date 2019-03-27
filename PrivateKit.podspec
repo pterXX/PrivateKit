@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PrivateKit"
-  s.version      = "12"
+  s.version      = "13"
   s.summary      = "PrivateKit."
 
   # This description is used to generate tags and improve search results.
