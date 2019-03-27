@@ -17,6 +17,7 @@
 		849D79FF224B493E0074AE1F /* UIScrollView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D79FE224B493E0074AE1F /* UIScrollView+Extensions.m */; };
 		849D7A06224B4AB70074AE1F /* UIWindow+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A05224B4AB70074AE1F /* UIWindow+Extensions.m */; };
 		849D7A0A224B4AE10074AE1F /* UIAlertView+ActionBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A09224B4AE10074AE1F /* UIAlertView+ActionBlocks.m */; };
+		849D7A11224B55690074AE1F /* UICollectionViewCell+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A0F224B55680074AE1F /* UICollectionViewCell+Extensions.m */; };
 		84E97A442248AD5200DF8842 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A432248AD5200DF8842 /* AppDelegate.m */; };
 		84E97A472248AD5200DF8842 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97A462248AD5200DF8842 /* ViewController.m */; };
 		84E97A4C2248AD5A00DF8842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E97A4B2248AD5A00DF8842 /* Assets.xcassets */; };
@@ -83,6 +84,8 @@
 		849D7A05224B4AB70074AE1F /* UIWindow+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extensions.m"; sourceTree = "<group>"; };
 		849D7A08224B4AE10074AE1F /* UIAlertView+ActionBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+ActionBlocks.h"; sourceTree = "<group>"; };
 		849D7A09224B4AE10074AE1F /* UIAlertView+ActionBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+ActionBlocks.m"; sourceTree = "<group>"; };
+		849D7A0F224B55680074AE1F /* UICollectionViewCell+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+Extensions.m"; sourceTree = "<group>"; };
+		849D7A10224B55690074AE1F /* UICollectionViewCell+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+Extensions.h"; sourceTree = "<group>"; };
 		84E97A3F2248AD5200DF8842 /* PrivateKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrivateKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E97A422248AD5200DF8842 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84E97A432248AD5200DF8842 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -220,6 +223,15 @@
 			path = UIAlertView;
 			sourceTree = "<group>";
 		};
+		849D7A0E224B55510074AE1F /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				849D7A10224B55690074AE1F /* UICollectionViewCell+Extensions.h */,
+				849D7A0F224B55680074AE1F /* UICollectionViewCell+Extensions.m */,
+			);
+			path = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
 		84E97A362248AD5200DF8842 = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +362,7 @@
 		84E97A8B2248AEF000DF8842 /* UIKit+Category */ = {
 			isa = PBXGroup;
 			children = (
+				849D7A0E224B55510074AE1F /* UICollectionViewCell */,
 				849D7A07224B4AD50074AE1F /* UIAlertView */,
 				849D7A03224B4A9F0074AE1F /* UIWindow */,
 				84E97A8C2248AEF000DF8842 /* UIImage */,
@@ -634,6 +647,7 @@
 				84E97AB62248AEF000DF8842 /* UIImage+Video.m in Sources */,
 				849D78FC224B40950074AE1F /* UIView+TipView.m in Sources */,
 				849D79FF224B493E0074AE1F /* UIScrollView+Extensions.m in Sources */,
+				849D7A11224B55690074AE1F /* UICollectionViewCell+Extensions.m in Sources */,
 				84E97AB12248AEF000DF8842 /* NSString+Size.m in Sources */,
 				849D7909224B41640074AE1F /* IMShortcutMethod.m in Sources */,
 				849D7900224B40D80074AE1F /* NSObject+Association.m in Sources */,
