@@ -108,12 +108,14 @@
             }
             
             dispatch_sync(dispatch_get_main_queue(), ^{
+                NSLog(@"图片压缩后的大小 %fKB",uploadImageData.length/1024.0);
                 block(uploadImageData);
             });
         });
     }
     else
     {
+        NSLog(@"图片压缩后的大小 %fKB",uploadImageData.length/1024.0);
         block(uploadImageData);
     }
 }
